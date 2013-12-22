@@ -1,9 +1,19 @@
 ActiveAdmin.register Poll do
+  menu :label => "TPS"
+
   permit_params counting_ballot_paper_attributes: [:poll_id, :male_voters, :female_voters, :spoiled_ballot_papers, :unauthorized, :status],
   candidate_counting_voice_papers_attributes: [:poll_id, :candidate_id, :total],
   out_side_poll_atrributes: [:poll_id, :male_voters, :female_voters]
 
   # actions :all, :except => [:new ]
+
+  filter :id, label: "No TPS"
+
+  index do
+    column "No TPS", :id
+    column "Alamat", :address
+    actions
+  end
 
   form  do |f|
     f.inputs "( TPS #{f.object.number} ) Counting Ballot Paper", for: [:counting_ballot_paper, f.object.counting_ballot_paper] do |ff| 
@@ -23,11 +33,9 @@ ActiveAdmin.register Poll do
 
     f.has_many :candidate_counting_voice_papers do |ff|
       ff.input :poll_id, input_html: { value: f.object.id }, as: :hidden
-      ff.input :candidate_id, as: :select, collection: Candidate.where(election_year: Date.today.year).all.map {|x| ["#{x.name_kp} - #{x.name_wkp}", x.id]}
+      ff.input :candidate_id, as: :select, collection: Candidate.where(election_year: Date.today.year).all.map {|x| ["#{x.name_kp} - #{x.name_wkp} (Putaran #{x.round_elections.last})", x.id]}
       ff.input :total, as: :number
-    end    
-
-    
+    end     
 
     f.actions
   end
