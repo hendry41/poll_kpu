@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  poll_id: 1
+  male_voters: 1
+  female_voters: 1
+  spoiled_ballot_papers: 1
+  unauthorized: 1
+  status: MyString
+
+two:
+  poll_id: 1
+  male_voters: 1
+  female_voters: 1
+  spoiled_ballot_papers: 1
+  unauthorized: 1
+  status: MyString

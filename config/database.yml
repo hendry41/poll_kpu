@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  reconnect: false
+  host: localhost
+  username: hendry
+  password: 123456
+
+development:
+  <<: *default
+  database: kpu_development
+
+test:
+  <<: *default
+  database: kpu_test
+
+production:
+  <<: *default
+  database: kpu

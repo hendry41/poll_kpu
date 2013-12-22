@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  election_year: 1
+  sequence_number: 1
+  name_kp: MyString
+  name_wkp: MyString
+  image: MyString
+
+two:
+  election_year: 1
+  sequence_number: 1
+  name_kp: MyString
+  name_wkp: MyString
+  image: MyString

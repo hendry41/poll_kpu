@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  number: 1
+  address: MyString
+  user_id: 
+  sub_district: 1
+  male_voters: 1
+  female_voters: 1
+  backup_ballot_papers: 1
+
+two:
+  number: 1
+  address: MyString
+  user_id: 
+  sub_district: 1
+  male_voters: 1
+  female_voters: 1
+  backup_ballot_papers: 1

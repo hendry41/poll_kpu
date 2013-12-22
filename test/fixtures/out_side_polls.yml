@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  poll_id: 1
+  male_voters: 1
+  female_voters: 1
+
+two:
+  poll_id: 1
+  male_voters: 1
+  female_voters: 1
