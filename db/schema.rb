@@ -69,11 +69,6 @@ ActiveRecord::Schema.define(version: 20131202140809) do
     t.datetime "updated_at"
   end
 
-  create_table "candidates_round_elections", id: false, force: true do |t|
-    t.integer "candidate_id"
-    t.integer "round_election_id"
-  end
-
   create_table "counting_ballot_papers", force: true do |t|
     t.integer  "poll_id"
     t.integer  "male_voters"
@@ -110,6 +105,7 @@ ActiveRecord::Schema.define(version: 20131202140809) do
   create_table "round_elections", force: true do |t|
     t.date     "date"
     t.integer  "number"
+    t.integer  "candidate_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

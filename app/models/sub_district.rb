@@ -4,5 +4,5 @@ class SubDistrict < ActiveRecord::Base
 	
 	accepts_nested_attributes_for :villages
 
-	validates :code, :address, :name, :admin_user_id, presence: true
+	validates :address, :name, :admin_user_id, presence: true
 end

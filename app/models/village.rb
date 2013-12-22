@@ -5,5 +5,5 @@ class Village < ActiveRecord::Base
 
 	accepts_nested_attributes_for :polls
 
-	validates :code, :address, :name, :admin_user_id, :rw, :rt, presence: true
+	validates :code, :address, :name, :admin_user_id, presence: true
 end

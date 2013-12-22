@@ -1,5 +1,5 @@
 class Candidate < ActiveRecord::Base
-	has_and_belongs_to_many :round_elections, :join_table => :candidates_round_elections
+	has_many :round_elections
 
 	accepts_nested_attributes_for :round_elections
 
