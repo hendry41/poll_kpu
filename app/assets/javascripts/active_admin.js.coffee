@@ -9,7 +9,7 @@ $(document).ready ->
   $(".cancel a").text "Batal"
   $(".view_link").text "Lihat"
   $(".edit_link").text "Ubah"
-  $(".delete_hapus").text "Hapus"
+  $(".delete_link").text "Hapus"
 
   if tmp is "villages"
     $("#page_title").text "Desa"
@@ -17,6 +17,17 @@ $(document).ready ->
     $(".edit_link").text "Tambah TPS"
     $($(".breadcrumb a")[1]).text "Desa"
     $(".has_many_container h3").text ""
+    $(".delete_link").remove()
+
+  if tmp is "polls"
+    $("#page_title").text "Rekap TPS"
+    $(".has_many_add").text "Tambah"
+    $(".edit_link").text "Rekap TPS"
+    $($(".breadcrumb a")[1]).text "Rekap TPS"
+    $(".has_many_container h3").text ""
+    $(".delete_link").remove()
+    $("#titlebar_right a:last").remove()
+
 
   if tmp is "sub_districts"
   	$(".has_many_add").text "Tambah Desa"
@@ -32,6 +43,13 @@ $(document).ready ->
   	$("#titlebar_right a:last").text "Hapus"
   else
   	$("#titlebar_right a").text "Tambah"
+
+  if window.location.pathname.split("/").length == 4 && tmp is "villages"
+    $("#titlebar_right a:first").text "Tambah TPS"
+
+  if window.location.pathname.split("/").length == 4 && tmp is "polls"
+    $("#titlebar_right a:first").text "Ubah Rekap TPS"
+
   
 
  

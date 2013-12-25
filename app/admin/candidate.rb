@@ -16,11 +16,13 @@ ActiveAdmin.register Candidate do
   end
 
   show do
-    attributes_table do
-    row ("No Urut") { candidate.sequence_number}
-    row ("Nama Calon Kepala Daerah") { candidate.name_kp }
-    row ("Nama Calon Wakil Kepala Daerah") {candidate.name_wkp}
-    row ("Foto Pasangan Calon") {image_tag(candidate.image_url(:thumb))}
+    panel "Detail Calon KP & WKP"  do
+      table_for candidate do
+        column ("No Urut") { candidate.sequence_number}
+        column ("Nama Calon Kepala Daerah") { candidate.name_kp }
+        column ("Nama Calon Wakil Kepala Daerah") {candidate.name_wkp}
+        column ("Foto Pasangan Calon") {image_tag(candidate.image_url(:thumb))}
+      end
     end
   end
 
@@ -29,15 +31,15 @@ ActiveAdmin.register Candidate do
       f.input :election_year, as: :select, 
       collection: (Date.today.year..Date.today.year + 3).to_a,
       :include_blank => false, label: "Tahun Pemilihan"
-                                    
+
       f.input :sequence_number, as: :number, label: "No Urut"
       f.input :name_kp, label: "Nama Calon Kepala Daerah"
       f.input :name_wkp, label: "Nama Calon Wakil Kepala Daerah"
       f.input :image, label: "Foto Pasangan Calon"
 
       f.has_many :round_elections, heading: "Putaran Pemilihan"  do |round_election|
-          round_election.input :date, as: :datepicker, label: "Tanggal"
-          round_election.input :number, as: :select, collection: [1,2], label: "Putaran"
+        round_election.input :date, as: :datepicker, label: "Tanggal"
+        round_election.input :number, as: :select, collection: [1,2], label: "Putaran"
       end
     end
     f.actions
