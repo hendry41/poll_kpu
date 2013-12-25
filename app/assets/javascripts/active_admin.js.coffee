@@ -19,7 +19,7 @@ $(document).ready ->
     $(".edit_link").text "Tambah TPS"
     $($(".breadcrumb a")[1]).text "Desa"
     $(".has_many_container h3").text ""
-    # $(".delete_link").remove()
+    $(".delete_link").remove()
 
   if tmp is "polls"
     $("#page_title").text "Rekap TPS"

@@ -1,16 +1,22 @@
 ActiveAdmin.register Poll do
   menu :label => "TPS"
 
-  permit_params counting_ballot_paper_attributes: [:poll_id, :male_voters, :out_side_voters, :female_voters, :spoiled_ballot_papers, :unauthorized, :status],
+  permit_params counting_ballot_paper_attributes: [:id, :poll_id, :male_voters, :out_side_voters, :female_voters, :spoiled_ballot_papers, :unauthorized, :status],
   out_side_polls_atrributes: [:poll_id, :male_voters, :female_voters], 
-  candidate_counting_voice_papers_attributes: [:poll_id, :candidate_id, :total]
+  candidate_counting_voice_papers_attributes: [:id, :poll_id, :candidate_id, :total]
 
   actions :all, :except => [:new ]
   filter :number, label: "No TPS"
 
 
   controller do
-  
+    # before_filter :check_data, :only => :update
+
+    # def check_data
+    #   CountingBallotPaper.delete_all("poll_id = #{params[:id]}")
+    #   OutSidePoll.delete_all("poll_id = #{params[:id]}")
+    #   CandidateCountingVoicePaper.delete_all("poll_id = #{params[:id]}")
+    # end
   end
 
   index do
@@ -57,6 +63,7 @@ ActiveAdmin.register Poll do
 
   form  do |f|
     f.inputs "(Perhitungan Surat Suara TPS #{f.object.number} )", for: [:counting_ballot_paper, f.object.counting_ballot_paper || CountingBallotPaper.new] do |ff| 
+      ff.input :id, as: :hidden
       ff.input :poll_id, input_html: { value: f.object.id }, as: :hidden
       ff.input :male_voters, as: :number, label: "Pemilih Laki-Laki"
       ff.input :female_voters, as: :number, label: "Pemilih Perempuan"
@@ -67,6 +74,7 @@ ActiveAdmin.register Poll do
     end
 
     f.has_many :candidate_counting_voice_papers, heading: "Jumlah Surat Pemilihan Calon Kepala Daerah"  do |ff|
+      ff.input :id, as: :hidden
       ff.input :poll_id, input_html: { value: f.object.id }, as: :hidden
       ff.input :candidate_id, as: :select, label: "Calon KP & WKP",
       collection: Candidate.where(election_year: Date.today.year).all.map {|x| ["#{x.name_kp} - #{x.name_wkp} (Putaran #{x.round_elections.last.number})", x.id]}

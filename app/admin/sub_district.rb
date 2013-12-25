@@ -7,7 +7,7 @@ ActiveAdmin.register SubDistrict do
   filter :address, label: "Alamat"
   
   index do
-    column "Kode", :id
+    column "Kode", :code
     column "Alamat", :address
     column "Nama", :name
     actions
@@ -16,7 +16,7 @@ ActiveAdmin.register SubDistrict do
   show do
     panel "Detail Kecamatan" do
       table_for sub_district do
-        column ("Kode") { sub_district.id}
+        column ("Kode") { sub_district.code }
         column ("Alamat") { sub_district.address }
         column ("Nama") { sub_district.name }
         column ("Jumlah Desa") {sub_district.villages.size}
@@ -40,6 +40,7 @@ ActiveAdmin.register SubDistrict do
 
   form  do |f|
     f.inputs "Kecamatan" do
+      f.input :code, label: "Kode"
       f.input :address, label: "Alamat"
       f.input :name, label: "Nama"
       f.input :admin_user_id, as: :hidden, :input_html => { value: current_admin_user.id }

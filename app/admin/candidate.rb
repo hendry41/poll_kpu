@@ -1,7 +1,7 @@
 ActiveAdmin.register Candidate do
   menu :label => "Calon"
   permit_params :election_year, :sequence_number, :name_kp, :name_wkp, 
-  :image, round_elections_attributes: [:date, :number]
+  :image, round_elections_attributes: [:id, :date, :number]
   
   filter :election_year, label: "Tahun Pemilu", collection: (Date.today.year..Date.today.year + 3).to_a, :as => :select
 
@@ -37,7 +37,8 @@ ActiveAdmin.register Candidate do
       f.input :name_wkp, label: "Nama Calon Wakil Kepala Daerah"
       f.input :image, label: "Foto Pasangan Calon"
 
-      f.has_many :round_elections, heading: "Putaran Pemilihan"  do |round_election|
+      f.has_many :round_elections, :allow_destroy => true, heading: "Putaran Pemilihan"  do |round_election|
+        round_election.input :id, as: :hidden
         round_election.input :date, as: :datepicker, label: "Tanggal"
         round_election.input :number, as: :select, collection: [1,2], label: "Putaran"
       end
