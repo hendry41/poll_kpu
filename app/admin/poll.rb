@@ -6,18 +6,11 @@ ActiveAdmin.register Poll do
   candidate_counting_voice_papers_attributes: [:poll_id, :candidate_id, :total]
 
   actions :all, :except => [:new ]
-
   filter :number, label: "No TPS"
 
 
   controller do
-    before_filter :check_data, :only => :update
-
-    def check_data
-      CountingBallotPaper.delete_all("poll_id = #{params[:id]}")
-      OutSidePoll.delete_all("poll_id = #{params[:id]}")
-      CandidateCountingVoicePaper.delete_all("poll_id = #{params[:id]}")
-    end
+  
   end
 
   index do
@@ -37,28 +30,28 @@ ActiveAdmin.register Poll do
       end
     end
 
-    panel "Rekap Perhitungan Suara" do
-      table_for poll do
-        column ("Pemilih Laki-Laki") {poll.counting_ballot_paper.male_voters}
-        column ("Pemilih Perempuan") {poll.counting_ballot_paper.female_voters}
-        column ("Surat Suara Rusak") {poll.counting_ballot_paper.spoiled_ballot_papers}
-        column ("Tidak Sah") {poll.counting_ballot_paper.unauthorized}
-        column ("Pemilih Dari luar") {poll.counting_ballot_paper.out_side_voters}
-        column ("Sisa Surat Suara") { poll.counting_papers(poll)}
-      end
-    end
+    # panel "Rekap Perhitungan Suara" do
+    #   table_for poll do
+    #     column ("Pemilih Laki-Laki") {poll.counting_ballot_paper.male_voters}
+    #     column ("Pemilih Perempuan") {poll.counting_ballot_paper.female_voters}
+    #     column ("Surat Suara Rusak") {poll.counting_ballot_paper.spoiled_ballot_papers}
+    #     column ("Tidak Sah") {poll.counting_ballot_paper.unauthorized}
+    #     column ("Pemilih Dari luar") {poll.counting_ballot_paper.out_side_voters}
+    #     column ("Sisa Surat Suara") { poll.counting_papers(poll)}
+    #   end
+    # end
 
-    panel "Rekap Per -  Calon KP WKP" do
-      table_for poll.candidate_counting_voice_papers do 
-        column "Calon KP & WKP" do |candidate_counting_voice_paper|
-          "#{candidate_counting_voice_paper.candidate.name_kp} - #{candidate_counting_voice_paper.candidate.name_wkp}"
-        end
+    # panel "Rekap Per -  Calon KP WKP" do
+    #   table_for poll.candidate_counting_voice_papers do 
+    #     column "Calon KP & WKP" do |candidate_counting_voice_paper|
+    #       "#{candidate_counting_voice_paper.candidate.name_kp} - #{candidate_counting_voice_paper.candidate.name_wkp}"
+    #     end
 
-        column "Jumlah Suara" do |candidate_counting_voice_paper|
-          candidate_counting_voice_paper.total
-        end
-      end
-    end
+    #     column "Jumlah Suara" do |candidate_counting_voice_paper|
+    #       candidate_counting_voice_paper.total
+    #     end
+    #   end
+    # end
 
   end
 

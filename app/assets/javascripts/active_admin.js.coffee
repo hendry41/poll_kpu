@@ -1,4 +1,6 @@
 #= require active_admin/base
+#= require jquery.bpopup.min
+
 $(document).ready ->
   tmp = window.location.pathname.split("/")[2]
 
@@ -17,7 +19,7 @@ $(document).ready ->
     $(".edit_link").text "Tambah TPS"
     $($(".breadcrumb a")[1]).text "Desa"
     $(".has_many_container h3").text ""
-    $(".delete_link").remove()
+    # $(".delete_link").remove()
 
   if tmp is "polls"
     $("#page_title").text "Rekap TPS"
@@ -49,7 +51,21 @@ $(document).ready ->
 
   if window.location.pathname.split("/").length == 4 && tmp is "polls"
     $("#titlebar_right a:first").text "Ubah Rekap TPS"
+  
+  $("#btn-add-village").click ->
+    $('.pop-add').bPopup()
 
+  $("#btn-search-village").click ->
+    $('.pop-search').bPopup()
+
+  $("#search-tps").click ->
+    $('.pop-search').bPopup()
+
+  $(".btn-update-village").click ->
+    $('.pop-update-vilage-'+ $(this).attr("data-id")).bPopup()
+    
+  $(".btn-update-poll").click ->
+    $('.pop-update-tps-'+ $(this).attr("data-id")).bPopup()
   
 
  
