@@ -1,0 +1,23 @@
+<div class="popup pop-add">
+<span class="button b-close"><span>X</span></span>
+
+<form accept-charset="UTF-8" action="/admin/sub_districts/<%= @sub_district.id %>" class="formtastic sub_district" id="edit_sub_district" method="post" novalidate="novalidate"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="_method" type="hidden" value="patch"><input name="authenticity_token" type="hidden" value="eEf26jSlTtpCwLZRiTKXExPhj6P/tzlJ0Nr8oWanc7Y="></div>
+<fieldset class="inputs has_many_fields"><ol><li class="string input required stringish" id="sub_district_villages_attributes_0_code_input"><label class="label" for="sub_district_villages_attributes_0_code">Kode Desa<abbr title="required">*</abbr></label><input id="sub_district_villages_attributes_0_code" maxlength="255" name="sub_district[villages_attributes][0][code]" type="text">
+
+</li><li class="string input required stringish" id="sub_district_villages_attributes_0_address_input"><label class="label" for="sub_district_villages_attributes_0_address">Alamat<abbr title="required">*</abbr></label><input id="sub_district_villages_attributes_0_address" maxlength="255" name="sub_district[villages_attributes][0][address]" type="text">
+<input id="sub_district_villages_attributes_0_sub_district_id" maxlength="255" name="sub_district[villages_attributes][0][sub_district_id]" type="hidden" value= "<%= @sub_district.id %>">
+</li><li class="string input required stringish" id="sub_district_villages_attributes_0_name_input"><label class="label" for="sub_district_villages_attributes_0_name">Nama<abbr title="required">*</abbr></label><input id="sub_district_villages_attributes_0_name" maxlength="255" name="sub_district[villages_attributes][0][name]" type="text">
+
+</li><li class="hidden input optional" id="sub_district_villages_attributes_0_admin_user_id_input"><input id="sub_district_villages_attributes_0_admin_user_id" name="sub_district[villages_attributes][0][admin_user_id]" type="hidden" value="1">
+
+</li><li><input name="commit" type="submit" value="Simpan"></li></ol></fieldset>
+</form>
+</div>
+
+<div class="popup pop-search">
+<span class="button b-close"><span>X</span></span>
+<form accept-charset="UTF-8" action="/admin/sub_districts/<%= @sub_district.id %>" class="formtastic sub_district"  method="put" novalidate="novalidate">
+<fieldset class="inputs has_many_fields"><ol><li class="string input required stringish" id="sub_district_villages_attributes_0_code_input"><label class="label" for="sub_district_villages_attributes_0_code">Kode Desa<abbr title="required">*</abbr></label><input maxlength="255" name="village_id" type="text">
+<li><input name="commit" type="submit" value="Cari"></li></ol></fieldset>
+</form>
+</div>

@@ -1,0 +1,20 @@
+<div class="popup pop-update-vilage-<%= village.id %>">
+<span class="button b-close"><span>X</span></span>
+<form accept-charset="UTF-8" action="/admin/villages/<%= village.id %>" class="formtastic village" id="edit_village" method="post" novalidate="novalidate">
+<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓">
+<input name="_method" type="hidden" value="patch"><input name="authenticity_token" type="hidden" value="eEf26jSlTtpCwLZRiTKXExPhj6P/tzlJ0Nr8oWanc7Y="></div>
+<fieldset class="inputs">
+<ol>
+</li><li class="string input required stringish" id="village_code_input">
+<label class="label" for="village_code">Code<abbr title="required">*</abbr></label>
+<input id="village_code" maxlength="255" name="village[code]" type="text" value="<%= village.code %>">
+
+</li><li class="string input required stringish" id="village_address_input">
+<label class="label" for="village_address">Address<abbr title="required">*</abbr>
+</label><input id="village_address" maxlength="255" name="village[address]" type="text" value="<%= village.address %>">
+
+</li><li class="string input required stringish" id="village_name_input"><label class="label" for="village_name">Name<abbr title="required">*</abbr></label><input id="village_name" maxlength="255" name="village[name]" type="text" value="<%= village.name %>">
+<li class="action input_action " id="village_submit_action"><input name="commit" type="submit" value="Simpan"></li>
+</li></form>
+</div>
+

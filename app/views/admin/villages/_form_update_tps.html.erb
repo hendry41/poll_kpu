@@ -1,0 +1,18 @@
+<div class="popup pop-update-tps-<%= tps.id %>">
+<span class="button b-close"><span>X</span></span>
+<form accept-charset="UTF-8" action="/admin/polls/<%= tps.id %>" class="formtastic poll" id="edit_poll" method="post" novalidate="novalidate"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="_method" type="hidden" value="patch"><input name="authenticity_token" type="hidden" value="eEf26jSlTtpCwLZRiTKXExPhj6P/tzlJ0Nr8oWanc7Y="></div><fieldset class="inputs"><ol>
+
+</li><li class="number input required numeric stringish" id="poll_number_input"><label class="label" for="poll_number">Number<abbr title="required">*</abbr></label><input id="poll_number" name="poll[number]" step="any" type="number" value="<%= tps.number%>">
+
+</li><li class="string input required stringish" id="poll_address_input"><label class="label" for="poll_address">Address<abbr title="required">*</abbr></label><input id="poll_address" maxlength="255" name="poll[address]" type="text" value="<%= tps.address%>">
+
+</li><li class="number input required numeric stringish" id="poll_male_voters_input"><label class="label" for="poll_male_voters">Male voters<abbr title="required">*</abbr></label><input id="poll_male_voters" name="poll[male_voters]" step="any" type="number" value="<%= tps.male_voters%>">
+
+</li><li class="number input required numeric stringish" id="poll_female_voters_input"><label class="label" for="poll_female_voters">Female voters<abbr title="required">*</abbr></label><input id="poll_female_voters" name="poll[female_voters]" step="any" type="number" value="<%= tps.female_voters%>">
+
+</li><li class="number input required numeric stringish" id="poll_backup_ballot_papers_input"><label class="label" for="poll_backup_ballot_papers">Backup ballot papers<abbr title="required">*</abbr></label><input id="poll_backup_ballot_papers" name="poll[backup_ballot_papers]" step="any" type="number" value="<%= tps.backup_ballot_papers%>">
+<li class="action input_action " id="poll_submit_action"><input name="commit" type="submit" value="Simpan"></li>
+</li>
+</form>
+</div>
+
